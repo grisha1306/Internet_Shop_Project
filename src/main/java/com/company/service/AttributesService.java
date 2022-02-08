@@ -18,15 +18,15 @@ public class AttributesService {
         return attributesDao.getById(id);
     }
 
-    public void saveAttributes(Attributes attributes) {
+    public void saveAttribute(Attributes attributes) {
         attributesDao.create(attributes);
     }
 
-    public void deleteAttributes(Attributes attributes) {
+    public void deleteAttribute(Attributes attributes) {
         attributesDao.delete(attributes);
     }
 
-    public void updateAttributes(Attributes attributes) {
+    public void updateAttribute(Attributes attributes) {
         attributesDao.update(attributes);
     }
 

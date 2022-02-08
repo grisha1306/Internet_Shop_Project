@@ -1,54 +1,56 @@
 package com.company.daoimpl;
 
-import com.company.dao.AttributesDao;
+import com.company.dao.ObjectsDao;
 import com.company.model.Attributes;
+import com.company.model.Objects;
 import com.company.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
 import java.util.List;
 
-public class AttributesDaoImpl implements AttributesDao {
+public class ObjectsDaoImpl implements ObjectsDao {
 
     @Override
-    public void create(Attributes attributes) {
+    public void create(Objects objects) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(attributes);
+        session.save(objects);
         transaction.commit();
         session.close();
     }
 
     @Override
-    public Attributes getById(Integer id) {
+    public Objects getById(Integer id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Attributes attribute = session.get(Attributes.class, id);
+        Objects object = session.get(Objects.class, id);
         session.close();
-        return attribute;
+        return object;
     }
 
     @Override
-    public void update(Attributes attributes) {
+    public void update(Objects objects) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.update(attributes);
+        session.update(objects);
         transaction.commit();
         session.close();
     }
 
     @Override
-    public void delete(Attributes attributes) {
+    public void delete(Objects objects) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.delete(attributes);
+        session.delete(objects);
         transaction.commit();
         session.close();
     }
 
     @Override
-    public List<Attributes> findAll() {
+    public List<Objects> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<Attributes> attributes = (List<Attributes>) session.createQuery("From Attributes ").list();
+        List<Objects> objects = (List<Objects>) session.createQuery("From Objects ").list();
         session.close();
-        return attributes;
+        return objects;
     }
 }
