@@ -1,0 +1,18 @@
+<div class="getProductInfo">
+  <div class="getProductInfo-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">attribute name</th>
+        <th scope="col">value</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of productInfo">
+        <td>{{ product.attributeName }}</td>
+        <td>{{ product.value }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
