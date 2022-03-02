@@ -20,6 +20,50 @@
 *.rar
 
 target/
-.idea/
+backend/.idea/
+backend/.idea/
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+frontend/internet-shop-front/dist
+frontend/internet-shop-front/tmp
+frontend/internet-shop-front/out-tsc
+frontend/internet-shop-front/bazel-out
+
+# Node
+frontend/internet-shop-front/node_modules
+frontend/internet-shop-front/npm-debug.log
+frontend/internet-shop-front/yarn-error.log
+
+# IDEs and editors
+frontend/internet-shop-front/.idea/
+frontend/internet-shop-front/.project
+frontend/internet-shop-front/.classpath
+frontend/internet-shop-front/.c9/
+frontend/internet-shop-front/*.launch
+frontend/internet-shop-front/.settings/
+frontend/internet-shop-front/*.sublime-workspace
+
+# Visual Studio Code
+frontend/internet-shop-front/.vscode/*
+frontend/internet-shop-front/!.vscode/settings.json
+frontend/internet-shop-front/!.vscode/tasks.json
+frontend/internet-shop-front/!.vscode/launch.json
+frontend/internet-shop-front/!.vscode/extensions.json
+frontend/internet-shop-front/.history/*
+
+# Miscellaneous
+frontend/internet-shop-front/.angular/cache
+frontend/internet-shop-front/.sass-cache/
+frontend/internet-shop-front/connect.lock
+frontend/internet-shop-front/coverage
+frontend/internet-shop-front/libpeerconnection.log
+frontend/internet-shop-front/testem.log
+frontend/internet-shop-front/typings
+# System files
+frontend/internet-shop-front/.DS_Store
+frontend/internet-shop-front/Thumbs.db
