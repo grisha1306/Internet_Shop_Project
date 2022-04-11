@@ -12,7 +12,7 @@ import java.util.List;
 public class ObjectsDaoImpl implements GenericDao<Objects> {
 
     @Override
-    public void create(Objects objects) {
+    public void save(Objects objects) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(objects);

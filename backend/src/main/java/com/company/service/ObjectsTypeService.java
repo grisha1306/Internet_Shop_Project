@@ -1,7 +1,7 @@
 package com.company.service;
 
 import com.company.daoimpl.ObjectsTypeDaoImpl;
-import com.company.model.ObjectsType;
+import com.company.model.ObjectType;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,23 +13,23 @@ public class ObjectsTypeService {
 
     public ObjectsTypeService() {}
 
-    public ObjectsType findObjectType(int id) {
+    public ObjectType findObjectType(int id) {
         return objectsTypeDao.getById(id);
     }
 
-    public void saveObjectType(ObjectsType objectsType) {
-        objectsTypeDao.create(objectsType);
+    public void saveObjectType(ObjectType objectType) {
+        objectsTypeDao.save(objectType);
     }
 
-    public void deleteObjectType(ObjectsType objectsType) {
-        objectsTypeDao.delete(objectsType);
+    public void deleteObjectType(ObjectType objectType) {
+        objectsTypeDao.delete(objectType);
     }
 
-    public void updateObjectType(ObjectsType objectsType) {
-        objectsTypeDao.update(objectsType);
+    public void updateObjectType(ObjectType objectType) {
+        objectsTypeDao.update(objectType);
     }
 
-    public List<ObjectsType> findAll() {
+    public List<ObjectType> findAll() {
         return objectsTypeDao.findAll();
     }
 

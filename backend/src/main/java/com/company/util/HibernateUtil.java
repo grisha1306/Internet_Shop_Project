@@ -20,8 +20,8 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(Attributes.class);
                 configuration.addAnnotatedClass(Objects.class);
                 configuration.addAnnotatedClass(Parameters.class);
-                configuration.addAnnotatedClass(References.class);
-                configuration.addAnnotatedClass(ObjectsType.class);
+                configuration.addAnnotatedClass(Orders.class);
+                configuration.addAnnotatedClass(ObjectType.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
 

@@ -1,35 +1,78 @@
 package com.company.model;
 
-public class User {
-    private int id;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.Set;
+
+public class User implements UserDetails {
+    private Integer id;
     private String username;
     private String password;
-    private String passwordConfirm;
-//    private Set<UserRole> roles;
-    private String roles;
+    private String confirmPassword;
+    private Set<Role> setRole;
+    private Role role;
+    private String roleString;
 
-    public User(int id, String username, String password, String passwordConfirm, String roles) {
+
+    public User(Integer id, String username, String password, String confirmPassword, Set<Role> setRole) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.passwordConfirm = passwordConfirm;
-        this.roles = roles;
+        this.confirmPassword = confirmPassword;
+        this.setRole = setRole;
     }
 
-    public User(String username, String password, String roles) {
+    public User(String username, String password, Set<Role> setRole) {
         this.username = username;
         this.password = password;
-        this.roles = roles;
+        this.setRole = setRole;
+    }
+
+    public User(Integer id, String username) {
+        this.id = id;
+        this.username = username;
+    }
+
+    public User(Integer id, String username, String roleString) {
+        this.id = id;
+        this.username = username;
+        this.roleString = roleString;
     }
 
     public User() {
     }
 
-    public int getId() {
+    public Set<Role> getSetRole() {
+        return setRole;
+    }
+
+    public void setSetRole(Set<Role> setRole) {
+        this.setRole = setRole;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getRoleString() {
+        return roleString;
+    }
+
+    public void setRoleString(String roleString) {
+        this.roleString = roleString;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -37,8 +80,33 @@ public class User {
         return username;
     }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getSetRole();
     }
 
     public String getPassword() {
@@ -49,19 +117,12 @@ public class User {
         this.password = password;
     }
 
-    public String getPasswordConfirm() {
-        return passwordConfirm;
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
 
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
-    public String getRoles() {
-        return roles;
-    }
-
-    public void setRoles(UserRole roles) {
-        this.roles = roles;
-    }
 }

@@ -1,53 +1,53 @@
 package com.company.daoimpl;
 
 import com.company.dao.GenericDao;
-import com.company.model.References;
+import com.company.model.Orders;
 import com.company.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class ReferencesDaoImpl implements GenericDao<References> {
+public class ReferencesDaoImpl implements GenericDao<Orders> {
     @Override
-    public void create(References references) {
+    public void save(Orders orders) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(references);
+        session.save(orders);
         transaction.commit();
         session.close();
     }
 
     @Override
-    public References getById(Integer id) {
+    public Orders getById(Integer id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        References reference = session.get(References.class, id);
+        Orders reference = session.get(Orders.class, id);
         session.close();
         return reference;
     }
 
     @Override
-    public void update(References references) {
+    public void update(Orders orders) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.update(references);
+        session.update(orders);
         transaction.commit();
         session.close();
     }
 
     @Override
-    public void delete(References references) {
+    public void delete(Orders orders) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.delete(references);
+        session.delete(orders);
         transaction.commit();
         session.close();
     }
 
     @Override
-    public List<References> findAll() {
+    public List<Orders> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<References> references = (List<References>) session.createQuery("From References ").list();
+        List<Orders> references = (List<Orders>) session.createQuery("From Orders ").list();
         session.close();
         return references;
     }

@@ -19,7 +19,7 @@ public class ParametersService {
     }
 
     public void saveParameter(Parameters parameters) {
-        parametersDao.create(parameters);
+        parametersDao.save(parameters);
     }
 
     public void deleteParameter(Parameters parameters) {

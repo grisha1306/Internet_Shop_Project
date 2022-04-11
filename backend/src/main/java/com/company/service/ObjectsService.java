@@ -18,7 +18,7 @@ public class ObjectsService {
     }
 
     public void saveObject(Objects objects) {
-        objectsDao.create(objects);
+        objectsDao.save(objects);
     }
 
     public void deleteObject(Objects objects) {

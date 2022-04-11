@@ -1,6 +1,7 @@
 package com.company.model;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -10,7 +11,8 @@ import javax.persistence.*;
 public class Parameters {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "incrementDomain")
+    @GenericGenerator(name = "incrementDomain", strategy = "increment")
     @Column(name = "parameter_id")
     private Integer parameterId;
 

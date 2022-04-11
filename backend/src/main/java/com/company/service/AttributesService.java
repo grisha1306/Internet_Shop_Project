@@ -18,8 +18,8 @@ public class AttributesService {
         return attributesDao.getById(id);
     }
 
-    public void createAttribute(Attributes attributes) {
-        attributesDao.create(attributes);
+    public void saveAttribute(Attributes attributes) {
+        attributesDao.save(attributes);
     }
 
     public void deleteAttribute(Attributes attributes) {

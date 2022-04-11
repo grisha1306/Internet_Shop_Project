@@ -2,20 +2,24 @@ package com.company.model;
 
 import org.springframework.security.core.GrantedAuthority;
 
-public class UserRole implements GrantedAuthority {
+public class Role implements GrantedAuthority {
 
     private int id;
     private String name;
 
-    public UserRole() {
+    public Role() {
     }
 
-    public UserRole(int id) {
+    public Role(int id) {
         this.id = id;
     }
 
-    public UserRole(int id, String name) {
+    public Role(int id, String name) {
         this.id = id;
+        this.name = name;
+    }
+
+    public Role(String name) {
         this.name = name;
     }
 

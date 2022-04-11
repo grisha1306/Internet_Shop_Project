@@ -1,6 +1,7 @@
 package com.company.model;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -8,17 +9,19 @@ import java.util.Objects;
 @Entity
 @Table(name = "object_types")
 @Data
-public class ObjectsType {
+public class ObjectType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "incrementDomain")
+    @GenericGenerator(name = "incrementDomain", strategy = "increment")
     @Column(name = "object_type_id")
     private Integer objectTypeId;
 
     @Column(name = "type_name")
     private String typeName;
 
-    public ObjectsType() {
+    public ObjectType() {
     }
 
     public Integer getObjectTypeId() {
@@ -41,7 +44,7 @@ public class ObjectsType {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ObjectsType that = (ObjectsType) o;
+        ObjectType that = (ObjectType) o;
         return Objects.equals(objectTypeId, that.objectTypeId) && Objects.equals(typeName, that.typeName);
     }
 

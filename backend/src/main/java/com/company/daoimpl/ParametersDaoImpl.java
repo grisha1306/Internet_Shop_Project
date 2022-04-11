@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 public class ParametersDaoImpl implements GenericDao<Parameters> {
 
     @Override
-    public void create(Parameters parameters) {
+    public void save(Parameters parameters) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(parameters);

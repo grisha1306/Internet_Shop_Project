@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface GenericDao <T> {
 
-    void create (T t);
+    void save (T t);
 
     T getById (Integer id);
 

@@ -1,55 +1,55 @@
 package com.company.daoimpl;
 
 import com.company.dao.GenericDao;
-import com.company.model.ObjectsType;
+import com.company.model.ObjectType;
 import com.company.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class ObjectsTypeDaoImpl implements GenericDao<ObjectsType> {
+public class ObjectsTypeDaoImpl implements GenericDao<ObjectType> {
 
     @Override
-    public void create(ObjectsType objectsType) {
+    public void save(ObjectType objectType) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(objectsType);
+        session.save(objectType);
         transaction.commit();
         session.close();
     }
 
     @Override
-    public ObjectsType getById(Integer id) {
+    public ObjectType getById(Integer id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        ObjectsType objectsType = session.get(ObjectsType.class, id);
+        ObjectType objectType = session.get(ObjectType.class, id);
         session.close();
-        return objectsType;
+        return objectType;
     }
 
     @Override
-    public void update(ObjectsType objectsType) {
+    public void update(ObjectType objectType) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.update(objectsType);
+        session.update(objectType);
         transaction.commit();
         session.close();
     }
 
     @Override
-    public void delete(ObjectsType objectsType) {
+    public void delete(ObjectType objectType) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.delete(objectsType);
+        session.delete(objectType);
         transaction.commit();
         session.close();
     }
 
     @Override
-    public List<ObjectsType> findAll() {
+    public List<ObjectType> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<ObjectsType> objectsType = (List<ObjectsType>) session.createQuery("From ObjectsType ").list();
+        List<ObjectType> objectType = (List<ObjectType>) session.createQuery("From ObjectType ").list();
         session.close();
-        return objectsType;
+        return objectType;
     }
 }

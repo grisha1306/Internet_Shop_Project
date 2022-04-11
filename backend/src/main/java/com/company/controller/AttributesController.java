@@ -20,7 +20,7 @@ public class AttributesController {
 
     @PostMapping("/attributes/")
     public int createAttributes(@RequestBody Attributes attributes){
-        attributesService.createAttribute(attributes);
+        attributesService.saveAttribute(attributes);
 
         return HttpStatus.SC_CREATED;
     }

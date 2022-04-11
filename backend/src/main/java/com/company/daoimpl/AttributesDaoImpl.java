@@ -10,7 +10,7 @@ import java.util.List;
 public class AttributesDaoImpl implements GenericDao<Attributes> {
 
     @Override
-    public void create(Attributes attributes) {
+    public void save(Attributes attributes) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(attributes);

@@ -1,5 +1,7 @@
 package com.company.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -8,7 +10,9 @@ import java.util.Objects;
 public class Attributes {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "incrementDomain")
+    @GenericGenerator(name = "incrementDomain", strategy = "increment")
     @Column(name = "attribute_id")
     private Integer id;
 

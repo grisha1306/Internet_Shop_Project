@@ -1,14 +1,20 @@
 package com.company.model;
 
+import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "objects")
+@Data
 public class Objects {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "object_id")
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "incrementDomain")
+    @GenericGenerator(name = "incrementDomain", strategy = "increment")
     private Integer objectId;
 
     @Column(name = "object_name")
@@ -16,7 +22,7 @@ public class Objects {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "object_type")
-    private ObjectsType objectType;
+    private ObjectType objectType;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_id")
@@ -41,11 +47,11 @@ public class Objects {
         this.objectName = objectName;
     }
 
-    public ObjectsType getObjectType() {
+    public ObjectType getObjectType() {
         return objectType;
     }
 
-    public void setObjectType(ObjectsType objectType) {
+    public void setObjectType(ObjectType objectType) {
         this.objectType = objectType;
     }
 

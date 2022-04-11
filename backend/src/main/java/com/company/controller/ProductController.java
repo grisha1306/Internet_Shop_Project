@@ -20,7 +20,7 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @GetMapping("/products/")
+    @GetMapping("/products")
     public List<Product> getAllProducts(){
         return productService.getAllProducts();
     }
@@ -28,6 +28,5 @@ public class ProductController {
     @GetMapping("/infoAboutProduct/{id}")
     public List<ProductInfo> getAllInfoAboutProduct(@PathVariable(value = "id") Integer id){
         return productService.getAllInfoAboutProduct(id);
-
     }
 }
