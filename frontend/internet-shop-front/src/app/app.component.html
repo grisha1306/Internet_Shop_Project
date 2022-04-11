@@ -12,39 +12,14 @@
 
 <div class="container">
   <div align='center'><h1>Internet Shop</h1></div>
-  <div class="container">
-    <table class="table" style="width: 50%">
-      <tr>
-        <th>objectId</th>
-        <th>objectName</th>
-        <th>typeName</th>
-        <th>actions</th>
-<!--        <th>typeName</th>-->
-<!--        <th>attributeName</th>-->
-        <th></th>
-      </tr>
-      <tr *ngFor="let product of products; let i = index ">
-        <td>
-          {{product.objectId}}
-        </td>
-        <td>
-          {{product.objectName}}
-        </td>
-        <td>
-          {{product.typeName}}
-        </td>
-<!--        <td>-->
-<!--          <div>-->
-<!--            <button class="viewAllSpecs" routerLink="/infoAboutProduct/{i}" (click)="viewAllInfoAboutProject(i)">View All Spec</button>-->
-<!--          </div>-->
-<!--        </td>-->
-        <td>
-          <nav>
-            <a routerLink="/infoAboutProduct/{{product.objectId}}">View All Spec</a>
-          </nav>
-        </td>
-      </tr>
-    </table>
-  </div>
+<!--  <nav>-->
+    <button routerLink="/allProducts">Get All Products<br></button>
+    <button routerLink="/login">Login<br></button>
+    <button routerLink="/registration">Registration<br></button>
+    <button [hidden]="!authenticated()" (click)="logout()">Logout<br></button>
+    <button [hidden]="!authenticated()" (click)="toCart()">Cart<br></button>
+<!--    <button [hidden]="getRole() != 'ROLE_ADMIN'" (click)="getAllUsers()">getAllUsers<br></button>-->
+    <button [hidden]="!getRole()" routerLink="/getAllUsers">getAllUsers<br></button>
+
   <router-outlet></router-outlet>
 </div>

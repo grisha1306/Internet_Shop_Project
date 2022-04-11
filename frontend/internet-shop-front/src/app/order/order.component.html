@@ -1,0 +1,26 @@
+<div class="container">
+  <table class="table" style="width: 50%">
+    <tr>
+      <th>objectId</th>
+      <th>objectName</th>
+      <th>typeName</th>
+      <th>actions</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let product of products; let i = index ">
+      <td>
+        {{i+1}}
+      </td>
+      <td>
+        {{product.objectName}}
+      </td>
+      <td>
+        {{product.typeName}}
+      </td>
+      <td>
+        <button routerLink="/infoAboutProduct/{{product.objectId}}">View All Spec</button>
+        <button (click)="delete(product.objectId)">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>

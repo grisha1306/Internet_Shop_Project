@@ -1,0 +1,25 @@
+<div class="container">
+  <table class="table" style="width: 50%">
+    <tr>
+      <th>UserId</th>
+      <th>UserNameName</th>
+      <th>UserRole</th>
+      <th>Action</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let user of users; let i = index ">
+      <td>
+        {{i+1}}
+      </td>
+      <td>
+        {{user.username}}
+      </td>
+      <td>
+        {{user.roleString}}
+      </td>
+      <td>
+      <button *ngIf="user.roleString == 'ROLE_USER'" (click)="delete(user.id)">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>

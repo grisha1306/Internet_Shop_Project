@@ -4,6 +4,6 @@ export class Attributes {
   id: number;
   // @ts-ignore
   attributeName: string;
-  
-  
+
+
 }

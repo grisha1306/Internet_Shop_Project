@@ -1,14 +1,13 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { ProductInfo } from "../model/product-info";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  private productsUrl = 'http://localhost:8080/products/';
+  private productsUrl = 'http://localhost:8080/products';
 
   private viewAllSpecUrl = 'http://localhost:8080/infoAboutProduct';
 
@@ -22,5 +21,6 @@ export class ProductsService {
     const url = `${this.viewAllSpecUrl}/${productId}`;
     return this.http.get<any[]>(url);
   }
+
 
 }

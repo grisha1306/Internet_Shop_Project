@@ -1,0 +1,26 @@
+<div id="registration-box">
+  <h2>Registration Here</h2>
+  <div class="alert alert-warning" *ngIf='noMatchPassword'>{{errorMessage}}</div>
+  <div class="alert alert-success" *ngIf='registrationSuccess'>{{successMessage}}</div>
+  <div class="alert alert-success" *ngIf='emailWasFound'>{{errorMessage}}</div>
+  <form name='RegistrationForm' (submit)="registration()">
+    <table>
+      <tr>
+        <td>Email:</td>
+        <td><input type='text' name='username' [(ngModel)]="username"></td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td><input type='password' name='password' [(ngModel)]="password"/></td>
+      </tr>
+      <tr>
+        <td>Confirm Password:</td>
+        <td><input type='password' name='confirmPassword' [(ngModel)]="confirmPassword"/></td>
+      </tr>
+      <tr>
+        <td colspan='2'><input name="submit" type="submit"
+                               value="Registration" /></td>
+      </tr>
+    </table>
+  </form>
+</div>

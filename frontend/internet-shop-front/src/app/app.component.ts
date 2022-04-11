@@ -3,6 +3,9 @@ import {Router} from "@angular/router";
 import { Product } from './model/product';
 import { ProductInfo } from './model/product-info';
 import { ProductsService } from './service/products.service';
+import {AuthService} from "./service/auth.service";
+import {LoginComponent} from "./login/login.component";
+import {UserService} from "./service/user.service";
 
 @Component({
   selector: 'app-root',
@@ -12,29 +15,31 @@ import { ProductsService } from './service/products.service';
 export class AppComponent implements OnInit {
   title = 'Internet Shop';
   products: Product[] = [];
-  productInfo: ProductInfo[] = [];
 
-  constructor(private router: Router, private productsService: ProductsService) {
+  // constructor(private router: Router, private productsService: ProductsService) {
+  constructor(private router: Router, private authService : AuthService, private userService : UserService) {
   }
 
-  getProducts() {
-    this.productsService.getProducts().subscribe(data => {
-      this.products = data;
-    });
+  authenticated() { return this.authService.authenticated; }
+
+  getRole () : boolean{
+    if (this.authService.role == "ROLE_ADMIN") {
+      return true;
+    }
+
+    else {
+      return false;
+    }
   }
 
-  // viewAllInfoAboutProject(productId : number) {
-  //   this.productsService.viewAllInfoAboutProject(productId)
-  //     .subscribe(data => this.productInfo = data)
-  // }
+  logout () {
+    this.authService.logout();
+  }
 
-  // ngOnInit(): void {
-  //   this.router.events.subscribe(value => {
-  //     this.getProducts();
-  //   });
-  // }
+  toCart() {
+    this.router.navigateByUrl('userOrder');
+  }
 
   ngOnInit(): void {
-    this.productsService.getProducts().subscribe(data => this.products = data)
   }
 }

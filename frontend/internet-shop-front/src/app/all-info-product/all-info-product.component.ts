@@ -34,15 +34,4 @@ export class AllInfoProductComponent implements OnInit {
     this.productService.viewAllInfoAboutProduct(this.getUrlWithoutParams()).subscribe(data => this.productInfo = data);
   }
 
-  // public viewAllInfoAboutProduct(productId : number) {
-  //   this.productService.viewAllInfoAboutProduct(1).subscribe(data => this.productInfo = data)
-  // }
-
-  // viewAllInfoAboutProject(productId : number) {
-  //   this.productService.viewAllInfoAboutProject(productId)
-  //     .subscribe(data => this.productInfo = data)
-  // }
-
-
-
 }
