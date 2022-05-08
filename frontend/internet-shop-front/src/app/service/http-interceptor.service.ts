@@ -25,13 +25,13 @@
 
 // import {Injectable} from "@angular/core";
 // import {HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from "@angular/common/http";
-// import {AuthService} from "./auth.service";
+// import {LoginService} from "./auth.service";
 // import {Observable} from "rxjs";
 //
 // @Injectable()
 // export class HttpInterceptorService implements HttpInterceptor {
 //
-//   constructor(private authService: AuthService) { }
+//   constructor(private authService: LoginService) { }
 //
 //   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 //     if (this.authService.isUserLoggedin() && req.url.indexOf('basicauth') === -1) {

@@ -9,7 +9,7 @@ import {AllInfoProductComponent} from "./all-info-product/all-info-product.compo
 import {LoginComponent} from "./login/login.component";
 import {AllProductsComponent} from "./all-product/all-product.component";
 import {RegistrationComponent} from "./registration/registration.component";
-import {AuthService} from "./service/auth.service";
+import {LoginService} from "./service/login.service";
 import {OrderComponent} from "./order/order.component";
 import {AllUserComponent} from "./all-user/all-user.component";
 
@@ -40,7 +40,7 @@ export class XhrInterceptor implements HttpInterceptor {
     HttpClientModule,
     FormsModule
   ],
-  providers: [ AuthService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true } ],
+  providers: [ LoginService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

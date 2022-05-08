@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../service/auth.service";
+import {LoginService} from "../service/login.service";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 
@@ -13,11 +13,11 @@ export class LoginComponent {
 
   credentials = {username: '', password: ''};
 
-  constructor(private authService: AuthService, private http: HttpClient, private router: Router) {
+  constructor(private loginService: LoginService, private http: HttpClient, private router: Router) {
   }
 
   login() {
-    this.authService.authenticate(this.credentials, () => {
+    this.loginService.authenticate(this.credentials, () => {
       this.router.navigateByUrl('/allProducts');
     });
     return false;

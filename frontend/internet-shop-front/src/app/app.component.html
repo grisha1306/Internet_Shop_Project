@@ -13,13 +13,13 @@
 <div class="container">
   <div align='center'><h1>Internet Shop</h1></div>
 <!--  <nav>-->
-    <button routerLink="/allProducts">Get All Products<br></button>
-    <button routerLink="/login">Login<br></button>
-    <button routerLink="/registration">Registration<br></button>
-    <button [hidden]="!authenticated()" (click)="logout()">Logout<br></button>
-    <button [hidden]="!authenticated()" (click)="toCart()">Cart<br></button>
-<!--    <button [hidden]="getRole() != 'ROLE_ADMIN'" (click)="getAllUsers()">getAllUsers<br></button>-->
-    <button [hidden]="!getRole()" routerLink="/getAllUsers">getAllUsers<br></button>
+    <button type="button" class="btn btn-primary" routerLink="/allProducts">All Products<br></button>
+    <button type="button" class="btn btn-primary" routerLink="/login">Login<br></button>
+    <button type="button" class="btn btn-primary" routerLink="/registration">Registration<br></button>
+    <button *ngIf="authenticated()" type="button" class="btn btn-primary" (click)="logout()">Logout<br></button>
+    <button *ngIf="authenticated()" type="button" class="btn btn-primary" (click)="logout()">Logout<br></button>
+    <button *ngIf="authenticated()" type="button" class="btn btn-primary" (click)="toCart()">Cart<br></button>
+    <button *ngIf="getRole()" type="button" class="btn btn-primary" routerLink="/getAllUsers">getAllUsers<br></button>
 
   <router-outlet></router-outlet>
 </div>

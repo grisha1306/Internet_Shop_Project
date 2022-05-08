@@ -3,7 +3,7 @@ import {Router} from "@angular/router";
 import { Product } from './model/product';
 import { ProductInfo } from './model/product-info';
 import { ProductsService } from './service/products.service';
-import {AuthService} from "./service/auth.service";
+import {LoginService} from "./service/login.service";
 import {LoginComponent} from "./login/login.component";
 import {UserService} from "./service/user.service";
 
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   products: Product[] = [];
 
   // constructor(private router: Router, private productsService: ProductsService) {
-  constructor(private router: Router, private authService : AuthService, private userService : UserService) {
+  constructor(private router: Router, private authService : LoginService, private userService : UserService) {
   }
 
   authenticated() { return this.authService.authenticated; }

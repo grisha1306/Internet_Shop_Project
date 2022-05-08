@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {Product} from "../model/product";
 import {ProductsService} from "../service/products.service";
-import {AuthService} from "../service/auth.service";
+import {LoginService} from "../service/login.service";
 import {OrderService} from "../service/order.service";
 import {OrderModel} from "../model/order-model";
 
@@ -18,7 +18,7 @@ export class AllProductsComponent implements OnInit {
     email: "", productId: 0
   }
 
-  constructor(private router: Router, private productsService: ProductsService, private authService: AuthService, private orderService: OrderService) {
+  constructor(private router: Router, private productsService: ProductsService, private loginService: LoginService, private orderService: OrderService) {
   }
 
   ngOnInit(): void {
@@ -26,10 +26,10 @@ export class AllProductsComponent implements OnInit {
   }
 
 
-  authenticated() { return this.authService.authenticated; }
+  authenticated() { return this.loginService.authenticated; }
 
   addToCart(productId: number) {
-    const email = this.authService.username;
+    const email = this.loginService.username;
     console.log(email);
     this.order  = {email: email, productId: productId}
     this.orderService.addToOrder(this.order);

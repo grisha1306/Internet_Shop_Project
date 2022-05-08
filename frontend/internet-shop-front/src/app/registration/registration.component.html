@@ -7,18 +7,18 @@
     <table>
       <tr>
         <td>Email:</td>
-        <td><input type='text' name='username' [(ngModel)]="username"></td>
+        <td><input type='text' class="form-control" id="exampleInputEmail1" placeholder="Enter email" name='username' [(ngModel)]="username"></td>
       </tr>
       <tr>
         <td>Password:</td>
-        <td><input type='password' name='password' [(ngModel)]="password"/></td>
+        <td><input type='password' class="form-control" id="exampleInputPassword1" placeholder="Enter password" name='password' [(ngModel)]="password"/></td>
       </tr>
       <tr>
         <td>Confirm Password:</td>
-        <td><input type='password' name='confirmPassword' [(ngModel)]="confirmPassword"/></td>
+        <td><input type='password' class="form-control" id="exampleInputConfirmPassword1" placeholder="Enter confirm password" name='confirmPassword' [(ngModel)]="confirmPassword"/></td>
       </tr>
       <tr>
-        <td colspan='2'><input name="submit" type="submit"
+        <td colspan='2'><input class="btn btn-secondary" name="submit" type="submit"
                                value="Registration" /></td>
       </tr>
     </table>
