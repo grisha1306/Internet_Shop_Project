@@ -9,6 +9,7 @@ export class LoginService {
 
   authenticated = false;
   username = '';
+  password = '';
   role = '';
 
   constructor(private http: HttpClient) {
@@ -18,13 +19,14 @@ export class LoginService {
   authenticate(credentials, callback) {
 
     this.username = credentials.username;
+    this.password = credentials.password;
     const headers = new HttpHeaders(credentials ? {
       authorization : 'Basic ' + btoa(credentials.username + ':' + credentials.password)
     } : {});
 
     this.http.get('http://localhost:8080/login', {headers: headers}).subscribe(response => {
       // @ts-ignore
-      if (response['name']) {
+      if (response.authenticated == true) {
         this.authenticated = true;
         // @ts-ignore
         this.role = response.authorities[0].authority;
@@ -41,6 +43,14 @@ export class LoginService {
     this.username = '';
     this.authenticated = false;
     this.role = '';
+    this.http.get('http://localhost:8080/logout').subscribe(response => {
+    });
   }
 
+  isUserLoggedIn() : boolean {
+    if (this.username != '')
+      return true;
+    else
+      return false;
+  }
 }

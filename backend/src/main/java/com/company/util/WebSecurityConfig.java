@@ -3,8 +3,8 @@ package com.company.util;
 import com.company.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -25,10 +25,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.csrf().disable().httpBasic().and()
+        http.cors().and().csrf().disable().httpBasic().and()
                 .authorizeRequests()
-                    .antMatchers("/getAllUsers/**").access("hasAnyRole('ROLE_ADMIN')")
-                    .antMatchers("/products", "/user", "/*", "/delete/1", "/getOrder/**").permitAll()
+//                    .antMatchers("/getAllUsers").access("hasAnyRole('ROLE_ADMIN')")
+                    .antMatchers("/products", "/infoAboutProduct/**", "/deleteProduct/**",
+                            "/getOrder/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
 //                //Настройка для входа в систему
@@ -36,9 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login")
                     .permitAll()
                     .and()
-                .logout()
-                    .permitAll()
-                .logoutSuccessUrl("/products");
+                .logout().logoutSuccessUrl("/products");
     }
 
     @Autowired

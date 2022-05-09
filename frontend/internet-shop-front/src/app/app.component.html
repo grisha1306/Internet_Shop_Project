@@ -17,7 +17,6 @@
     <button type="button" class="btn btn-primary" routerLink="/login">Login<br></button>
     <button type="button" class="btn btn-primary" routerLink="/registration">Registration<br></button>
     <button *ngIf="authenticated()" type="button" class="btn btn-primary" (click)="logout()">Logout<br></button>
-    <button *ngIf="authenticated()" type="button" class="btn btn-primary" (click)="logout()">Logout<br></button>
     <button *ngIf="authenticated()" type="button" class="btn btn-primary" (click)="toCart()">Cart<br></button>
     <button *ngIf="getRole()" type="button" class="btn btn-primary" routerLink="/getAllUsers">getAllUsers<br></button>
 
