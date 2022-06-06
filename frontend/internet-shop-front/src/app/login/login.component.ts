@@ -12,9 +12,12 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class LoginComponent {
 
   credentials = {username: '', password: ''};
-  unsuccessful = true;
 
   constructor(private loginService: LoginService, private http: HttpClient, private router: Router) {
+  }
+
+  checkEnter() {
+    return this.loginService.noUser;
   }
 
   login() {

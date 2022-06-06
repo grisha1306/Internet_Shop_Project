@@ -1,5 +1,6 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,13 @@ export class LoginService {
   username = '';
   password = '';
   role = '';
+  noUser = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
-  // @ts-ignore
-  authenticate(credentials, callback) {
+
+  authenticate(credentials: { username: any; password: any; }, callback: { (): void; (): any; }) {
 
     this.username = credentials.username;
     this.password = credentials.password;
@@ -30,7 +32,14 @@ export class LoginService {
         this.authenticated = true;
         // @ts-ignore
         this.role = response.authorities[0].authority;
-      } else {
+      }
+      // @ts-ignore
+      else if (response.user == null) {
+        this.noUser = true;
+        this.authenticated = false;
+      }
+      else {
+        this.noUser = true;
         this.authenticated = false;
       }
 
@@ -43,14 +52,7 @@ export class LoginService {
     this.username = '';
     this.authenticated = false;
     this.role = '';
-    this.http.get('http://localhost:8080/logout').subscribe(response => {
-    });
+    this.router.navigateByUrl('/logout');
   }
 
-  isUserLoggedIn() : boolean {
-    if (this.username != '')
-      return true;
-    else
-      return false;
-  }
 }

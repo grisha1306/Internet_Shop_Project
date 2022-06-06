@@ -14,18 +14,25 @@ export class OrderComponent implements OnInit{
 
   products: Product[] = [];
   status: string = '';
+  totalPrice = 0;
+  calcPrice = false;
 
   constructor(private router: Router, private http: HttpClient, private orderService : OrderService , private loginService : LoginService) {
   }
 
   ngOnInit() {
-    this.orderService.getOrder(this.loginService.username).subscribe(data => this.products = data);
+    this.orderService.getOrder(this.loginService.username).subscribe(data =>
+      this.products = data);
   }
 
-  delete(productId : number) {
-    this.orderService.delete(productId, this.loginService.username).subscribe(() => this.status = 'Delete successful');
-    if ( this.status == 'Delete successful')
-      this.router.navigateByUrl('/userOrder');
+  delete(productId : number, orderId : number) {
+    this.orderService.delete(productId, orderId, this.loginService.username);
   }
 
+  calcTotalPrice() {
+    for(let index in this.products) {
+      this.calcPrice = true;
+      this.totalPrice = this.totalPrice + this.products[index].price;
+    }
+  }
 }

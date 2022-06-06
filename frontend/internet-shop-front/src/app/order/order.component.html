@@ -1,16 +1,17 @@
 <div class="container">
-  <table class="table" style="width: 50%">
+  <table class="table table-striped" style="width: 50%">
+    <thead class="thead-light">
     <tr>
-      <th>objectId</th>
-      <th>objectName</th>
-      <th>typeName</th>
-      <th>actions</th>
-      <th></th>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Type</th>
+      <th scope="col">Price</th>
+      <th scope="col">Actions</th>
     </tr>
+    </thead>
+    <tbody>
     <tr *ngFor="let product of products; let i = index ">
-      <td>
-        {{i+1}}
-      </td>
+      <th scope="row">{{i+1}}</th>
       <td>
         {{product.objectName}}
       </td>
@@ -18,9 +19,15 @@
         {{product.typeName}}
       </td>
       <td>
-        <button routerLink="/infoAboutProduct/{{product.objectId}}">View All Spec</button>
-        <button (click)="delete(product.objectId)">Delete</button>
+        {{product.price}}
+      </td>
+      <td>
+        <button type="button" class="btn btn-secondary" routerLink="/infoAboutProduct/{{product.objectId}}">View All Spec</button>
+        <button type="button" class="btn btn-secondary" (click)="delete(product.objectId, product.orderId)">Delete</button>
       </td>
     </tr>
+    </tbody>
   </table>
+  <button type="button" class="btn btn-secondary" (click)="calcTotalPrice()">CalcTotalPrice</button>
+  <div class="alert alert-warning" *ngIf='calcPrice'>{{totalPrice}}</div>
 </div>

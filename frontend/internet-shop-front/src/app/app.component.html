@@ -1,21 +1,9 @@
-<!--<div style="text-align:center">-->
-<!--  <h1>-->
-<!--    Welcome to {{ title }}!-->
-<!--  </h1>-->
-<!--  <nav>-->
-<!--&lt;!&ndash;    <a routerLink="/getUsers">Get Users<br></a>&ndash;&gt;-->
-<!--    <a routerLink="/getProducts">Show all products<br></a>-->
-<!--&lt;!&ndash;    <a routerLink="/shortSummary">Short summary<br></a>&ndash;&gt;-->
-<!--  </nav>-->
-<!--  <app-order></app-order>-->
-<!--  <router-outlet></router-outlet>-->
-
 <div class="container">
   <div align='center'><h1>Internet Shop</h1></div>
-<!--  <nav>-->
+
     <button type="button" class="btn btn-primary" routerLink="/allProducts">All Products<br></button>
-    <button type="button" class="btn btn-primary" routerLink="/login">Login<br></button>
-    <button type="button" class="btn btn-primary" routerLink="/registration">Registration<br></button>
+    <button *ngIf="!authenticated()" type="button" class="btn btn-primary" routerLink="/login">Login<br></button>
+    <button *ngIf="!authenticated()" type="button" class="btn btn-primary" routerLink="/registration">Registration<br></button>
     <button *ngIf="authenticated()" type="button" class="btn btn-primary" (click)="logout()">Logout<br></button>
     <button *ngIf="authenticated()" type="button" class="btn btn-primary" (click)="toCart()">Cart<br></button>
     <button *ngIf="getRole()" type="button" class="btn btn-primary" routerLink="/getAllUsers">getAllUsers<br></button>

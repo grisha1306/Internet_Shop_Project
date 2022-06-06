@@ -28,6 +28,10 @@ export class AllProductsComponent implements OnInit {
 
   authenticated() { return this.loginService.authenticated; }
 
+  checkQuantity() {
+    return this.orderService.checkQuantity;
+  }
+
   addToCart(productId: number) {
     const email = this.loginService.username;
     console.log(email);

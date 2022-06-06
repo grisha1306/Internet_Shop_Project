@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {RegistrationService} from "../service/registration.service";
+import {LoginService} from "../service/login.service";
 
 @Component({
   selector: 'app-registration',
@@ -27,7 +28,7 @@ export class RegistrationComponent implements OnInit {
     password: '',
     confirmPassword: '',
   }
-  constructor(private router: Router, private regService : RegistrationService) {}
+  constructor(private router: Router, private regService : RegistrationService, private loginService : LoginService) {}
 
   ngOnInit(): void {
   }
@@ -40,7 +41,13 @@ export class RegistrationComponent implements OnInit {
       if ( result == 'Ok') {
         this.registrationSuccess = true;
         this.successMessage = 'Login Successful';
-        this.router.navigateByUrl('allProducts')
+        // this.router.navigateByUrl('allProducts')
+        let credentials = {username: '', password: ''};
+        credentials.password = this.password;
+        credentials.username = this.username;
+        this.loginService.authenticate(credentials, () => {
+          this.router.navigateByUrl('/allProducts');
+        });
       }
       else if ( result == 'incorrectPass') {
         this.noMatchPassword = true;

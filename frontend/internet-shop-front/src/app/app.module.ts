@@ -9,20 +9,9 @@ import {AllInfoProductComponent} from "./all-info-product/all-info-product.compo
 import {LoginComponent} from "./login/login.component";
 import {AllProductsComponent} from "./all-product/all-product.component";
 import {RegistrationComponent} from "./registration/registration.component";
-import {LoginService} from "./service/login.service";
 import {OrderComponent} from "./order/order.component";
 import {AllUserComponent} from "./all-user/all-user.component";
-
-@Injectable()
-export class XhrInterceptor implements HttpInterceptor {
-
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const xhr = req.clone({
-      headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
-    });
-    return next.handle(xhr);
-  }
-}
+import {HttpErrorInterceptor} from "./service/http-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -40,7 +29,14 @@ export class XhrInterceptor implements HttpInterceptor {
     HttpClientModule,
     FormsModule
   ],
-  providers: [ LoginService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true } ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
+  ],
+  // providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,6 +20,6 @@ export class AllUserComponent implements OnInit {
   }
 
   delete(userId : number) {
-    this.userService.deleteUser(userId).subscribe();
+    return this.userService.deleteUser(userId);
   }
 }
