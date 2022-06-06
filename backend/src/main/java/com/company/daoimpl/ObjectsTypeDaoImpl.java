@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 public class ObjectsTypeDaoImpl implements GenericDao<ObjectType> {
 
     @Override

@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 public class AttributesDaoImpl implements GenericDao<Attributes> {
 
     @Override

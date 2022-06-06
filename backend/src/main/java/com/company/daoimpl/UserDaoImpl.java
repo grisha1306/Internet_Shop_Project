@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 @Configurable
+@SuppressWarnings("unchecked")
 public class UserDaoImpl implements UserDao {
 
     public User findByUsername(String username) {

@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
-
+@SuppressWarnings("unchecked")
 public class ReferencesDaoImpl implements GenericDao<Orders> {
     @Override
     public void save(Orders orders) {

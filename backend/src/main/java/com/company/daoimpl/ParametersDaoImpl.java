@@ -1,19 +1,15 @@
 package com.company.daoimpl;
 
 import com.company.dao.GenericDao;
-import com.company.model.Objects;
 import com.company.model.Parameters;
-import com.company.model.Product;
 import com.company.model.ProductInfo;
 import com.company.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
+@SuppressWarnings("unchecked")
 public class ParametersDaoImpl implements GenericDao<Parameters> {
 
     @Override

@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 public class ObjectsDaoImpl implements GenericDao<Objects> {
 
     @Override
@@ -56,11 +57,7 @@ public class ObjectsDaoImpl implements GenericDao<Objects> {
 
     public List<Product> getAllProducts() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-//        Query<Product> query = session.createQuery("select new com.company.model.Product(p.value, p.objectId.objectId, p.objectId.objectName,"
-//                + "p.objectId.objectType.typeName, p.attributeId.attributeName) "
-//                + " from com.company.model.Parameters p ");
         List<Product> products = (List<Product>) session.createQuery("select new com.company.model.Product(o.objectId, o.objectName, o.objectType.typeName) from Objects o where objectType.typeName != 'user'").list();
-//        List<Product> products = query.list();
         session.close();
         return products;
     }

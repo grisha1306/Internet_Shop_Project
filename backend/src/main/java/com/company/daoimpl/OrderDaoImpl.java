@@ -10,6 +10,7 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 public class OrderDaoImpl implements OrderDao {
 
     @Override
