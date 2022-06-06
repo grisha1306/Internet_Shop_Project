@@ -1,4 +1,11 @@
 export class Product {
+  get quantity(): number {
+    return this._quantity;
+  }
+
+  set quantity(value: number) {
+    this._quantity = value;
+  }
   get orderId(): number {
     return this._orderId;
   }
@@ -45,5 +52,7 @@ export class Product {
   private _typeName : string;
   // @ts-ignore
   private _price : number;
+  // @ts-ignore
+  private _quantity : number;
 
 }

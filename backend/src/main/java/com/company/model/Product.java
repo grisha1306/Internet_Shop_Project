@@ -7,6 +7,8 @@ public class Product {
     private Integer price;
     private Integer orderId;
 
+    private Integer quantity;
+
     public Integer getOrderId() {
         return orderId;
     }
@@ -66,5 +68,12 @@ public class Product {
         this.typeName = typeName;
     }
 
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 }
 

@@ -24,10 +24,15 @@ export class OrderService {
 
   public addToOrder(order : OrderModel) {
     this.http.post(this.addToOrderUrl, order).subscribe(response => {
-      if ( response == false )
-        this.checkQuantity = true;
+      if ( response == true ) {
+        this.checkQuantity = false;
+        let currentUrl = this.router.url;
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.router.navigate([currentUrl]);
+        });
+      }
       else
-        this.checkQuantity = false
+        this.checkQuantity = true
     });;
   }
 

@@ -112,7 +112,7 @@ public class OrderDaoImpl implements OrderDao {
                     + " from com.company.model.Parameters p "
                     + " where p.objectId.objectId = :productId and p.attributeId.id =: attributeId ").setParameter("productId", productId).setParameter("attributeId" , curAttrId);
 
-            int curQuantity = Integer.valueOf(queryProductQuantity.getSingleResult());
+            int curQuantity = Integer.parseInt(queryProductQuantity.getSingleResult());
             int newQuantity = curQuantity + 1;
 
 
