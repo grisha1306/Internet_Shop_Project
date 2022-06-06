@@ -4,7 +4,7 @@ import com.company.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -24,24 +24,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        http.cors().and().csrf().disable().httpBasic().and()
+//        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.csrf().disable().httpBasic().and()
                 .authorizeRequests()
-//                    .antMatchers("/getAllUsers").access("hasAnyRole('ROLE_ADMIN')")
                     .antMatchers("/products", "/infoAboutProduct/**", "/deleteProduct/**",
-                            "/getOrder/**").permitAll()
-                    .anyRequest().authenticated()
+                            "/getOrder/**", "/registration", "/logout", "/deleteUser/**", "/addToOrder").permitAll()
                     .and()
 //                //Настройка для входа в систему
-                .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
-                    .and()
-                .logout().logoutSuccessUrl("/products");
+                .formLogin().loginPage("/login").permitAll()
+                .and()
+                .logout()
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID");
     }
 
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setHideUserNotFoundExceptions(false);
         auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
     }
 }

@@ -24,10 +24,6 @@ public class Objects {
     @JoinColumn(name = "object_type")
     private ObjectType objectType;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "parent_id")
-    private Objects parentId;
-
     public Objects() {
     }
 
@@ -55,25 +51,17 @@ public class Objects {
         this.objectType = objectType;
     }
 
-    public Objects getParent_id() {
-        return parentId;
-    }
-
-    public void setParent_id(Objects parentId) {
-        this.parentId = parentId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Objects objects = (Objects) o;
-        return java.util.Objects.equals(objectId, objects.objectId) && java.util.Objects.equals(objectName, objects.objectName) && java.util.Objects.equals(objectType, objects.objectType) && java.util.Objects.equals(parentId, objects.parentId);
+        return java.util.Objects.equals(objectId, objects.objectId) && java.util.Objects.equals(objectName, objects.objectName) && java.util.Objects.equals(objectType, objects.objectType);
     }
 
     @Override
     public int hashCode() {
-        return java.util.Objects.hash(objectId, objectName, objectType, parentId);
+        return java.util.Objects.hash(objectId, objectName, objectType);
     }
 
     @Override
@@ -82,7 +70,6 @@ public class Objects {
                 "objectId=" + objectId +
                 ", objectName='" + objectName + '\'' +
                 ", objectType=" + objectType +
-                ", parentId=" + parentId +
                 '}';
     }
 }

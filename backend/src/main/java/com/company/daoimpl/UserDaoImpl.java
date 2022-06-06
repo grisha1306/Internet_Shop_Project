@@ -8,11 +8,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -66,7 +64,6 @@ public class UserDaoImpl implements UserDao {
         Objects obj = new Objects();
         obj.setObjectName(user.getUsername());
         obj.setObjectType(objectType);
-        obj.setParent_id(null);
         session.save(obj);
 
         Parameters parameterUsername = new Parameters();
@@ -95,7 +92,7 @@ public class UserDaoImpl implements UserDao {
         session.close();
 
         MailService mailService = new MailService();
-        mailService.send(user.getUsername(), "Success Register" , "Thank you for register in out Internet shop" );
+        mailService.send(user.getUsername(), "Success Register" , "Thank you for register in our Internet shop" );
 
         return true;
     }

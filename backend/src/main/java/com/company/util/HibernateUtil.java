@@ -5,6 +5,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import java.util.Arrays;
+import java.util.List;
+
 
 public class HibernateUtil {
 
@@ -13,15 +16,15 @@ public class HibernateUtil {
     private HibernateUtil() {
     }
 
+    private static List<Class<?>> ANNOTATED_CLASSED = Arrays.asList(
+            Attributes.class, Objects.class, Parameters.class, Orders.class, ObjectType.class
+    );
+
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration().configure();
-                configuration.addAnnotatedClass(Attributes.class);
-                configuration.addAnnotatedClass(Objects.class);
-                configuration.addAnnotatedClass(Parameters.class);
-                configuration.addAnnotatedClass(Orders.class);
-                configuration.addAnnotatedClass(ObjectType.class);
+                ANNOTATED_CLASSED.forEach(configuration::addAnnotatedClass);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
 

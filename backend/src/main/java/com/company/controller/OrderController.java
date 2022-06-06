@@ -1,12 +1,9 @@
 package com.company.controller;
 
 import com.company.model.OrderModel;
-import com.company.model.Orders;
 import com.company.model.Product;
 import com.company.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +16,8 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/addToOrder")
-    public void addToOrder(@RequestBody OrderModel orderModel) {
-        orderService.addToOrder(orderModel);
+    public boolean addToOrder(@RequestBody OrderModel orderModel) {
+        return orderService.addToOrder(orderModel);
     }
 
     @GetMapping("/getOrder/{username}")
@@ -28,16 +25,18 @@ public class OrderController {
         return orderService.getOrder(username);
     }
 
-    @DeleteMapping(value = "/deleteProduct/{productId}/{email}")
-    public ResponseEntity<Integer> deletePost(@PathVariable Integer productId, @PathVariable String email) {
+    @DeleteMapping(value = "/deleteProduct/{productId}/{orderId}/{email}")
+    public boolean deletePost(@PathVariable Integer productId, @PathVariable Integer orderId, @PathVariable String email) {
 
-        boolean isRemoved = orderService.delete(productId, email);
+        boolean isRemoved = orderService.delete(productId, orderId, email);
 
-        if (!isRemoved) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return isRemoved;
 
-        return new ResponseEntity<>(productId, HttpStatus.OK);
+//        if (!isRemoved) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//
+//        return new ResponseEntity<>(productId, HttpStatus.OK);
     }
 
 }
