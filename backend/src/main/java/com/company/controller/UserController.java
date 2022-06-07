@@ -2,6 +2,7 @@ package com.company.controller;
 
 import com.company.model.User;
 import com.company.service.UserService;
+import com.company.util.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,11 +27,18 @@ public class UserController {
     public List<String> registration(@RequestBody User user){
         List<String> list = new ArrayList<>();
 
-        if ( !user.getPassword().equals(user.getConfirmPassword())) {
+        EmailValidator emailValidator = new EmailValidator();
 
+        if ( !emailValidator.validateEmail(user.getUsername())) {
+            list.add("IncorrectEmail");
+            return list;
+        }
+
+        if ( !user.getPassword().equals(user.getConfirmPassword())) {
             list.add("incorrectPass");
             return  list;
         }
+
         if (!userService.save(user)){
             list.add("User was found");
             return list;

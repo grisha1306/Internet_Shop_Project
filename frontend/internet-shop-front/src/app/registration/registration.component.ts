@@ -22,6 +22,7 @@ export class RegistrationComponent implements OnInit {
   emailWasFound = false;
   registrationSuccess = false;
   noMatchPassword = false;
+  incorrectEmail = false;
 
   model : any = {
     username: '',
@@ -38,6 +39,7 @@ export class RegistrationComponent implements OnInit {
       this.emailWasFound = false;
       this.registrationSuccess = false;
       this.noMatchPassword = false;
+      this.incorrectEmail = false;
       if ( result == 'Ok') {
         this.registrationSuccess = true;
         this.successMessage = 'Login Successful';
@@ -53,6 +55,12 @@ export class RegistrationComponent implements OnInit {
         this.noMatchPassword = true;
         this.registrationSuccess = false;
         this.errorMessage = 'incorrect password';
+      }
+      else if ( result == 'IncorrectEmail') {
+        this.noMatchPassword = false;
+        this.registrationSuccess = false;
+        this.incorrectEmail = true;
+        this.errorMessage = 'Incorrect email';
       }
       else {
         this.emailWasFound = true;

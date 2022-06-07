@@ -3,6 +3,8 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {OrderModel} from "../model/order-model";
 import {Router} from "@angular/router";
+import {ProductsService} from "./products.service";
+import {Product} from "../model/product";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,9 @@ export class OrderService {
 
   checkQuantity = false;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  products: Product[] = [];
+
+  constructor(private http: HttpClient, private router: Router, private productsService : ProductsService) { }
 
   public getOrder(email : string): Observable<any[]> {
     const url = `${this.orderUrl}/${email}`

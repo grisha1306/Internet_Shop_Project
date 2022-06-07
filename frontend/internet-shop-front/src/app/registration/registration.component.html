@@ -3,6 +3,7 @@
   <div class="alert alert-warning" *ngIf='noMatchPassword'>{{errorMessage}}</div>
   <div class="alert alert-success" *ngIf='registrationSuccess'>{{successMessage}}</div>
   <div class="alert alert-success" *ngIf='emailWasFound'>{{errorMessage}}</div>
+  <div class="alert alert-success" *ngIf='incorrectEmail'>{{errorMessage}}</div>
   <form name='RegistrationForm' (submit)="registration()">
     <table>
       <tr>
